@@ -22,7 +22,6 @@ function HeroSection({
           src={heroImgSrc}
           alt="hero background"
           priority
-          style={{ objectFit: "cover" }}
         />
       </div>
 
@@ -30,11 +29,18 @@ function HeroSection({
         {heroHeadlines || <h1>Headline Missing</h1>}
       </div>
 
-      <button className={`btn btn-medium btn--${theme}`}>
+      <button className={`btn btn--medium btn--${theme}`}>
         <Link href="/events">BOOK NOW</Link>
       </button>
 
-      <Image src={logo} alt="logo" priority className={`${styles.hero__logo} ${styles[theme]}`} />
+      <Image
+        src={logo}
+        alt="logo"
+        priority
+        className={`${styles.hero__logo} ${
+          theme === "turquoise" ? "" : styles.anothertheme
+        }`}
+      />
     </section>
   );
 }

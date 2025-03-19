@@ -14,4 +14,12 @@
   &-small {
     padding: 1.2rem 2rem;
   }
+
+  &--turquoise {
+    background-color: $turquoise;
+  }
+
+  &--medium {
+    padding: 1.6rem 3.2rem;
+  }
 }
