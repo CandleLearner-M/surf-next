@@ -1,0 +1,56 @@
+.footer {
+  height: 28.5rem;
+  width: 100%;
+  background-color: #0e0e0e;
+  color: white;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 4.5rem 4.8rem;
+  padding-top: 6rem;
+
+  &__logo {
+    width: 8rem;
+    filter: invert(99%) sepia(3%) saturate(825%) hue-rotate(200deg)
+      brightness(118%) contrast(100%);
+    height: auto;
+    color: white;
+  }
+
+  &__nav,
+  &__policies {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex;
+      list-style: none;
+
+      font-size: 2.5rem;
+
+      li {
+        cursor: pointer;
+        margin-right: 6.3rem;
+      }
+    }
+  }
+
+  &__policies {
+    ul {
+      font-size: 2rem;
+
+      li {
+        margin-right: 4.3rem;
+      }
+
+    }
+  }
+
+  &__copy {
+    font-size: 2rem;
+  }
+}
