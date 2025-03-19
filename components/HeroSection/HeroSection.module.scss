@@ -2,11 +2,10 @@
   height: 100vh;
   position: relative;
 
-  padding: 22rem 4.8rem 0;
+  padding: 18rem 4.8rem 0;
 
   color: black;
 
-  margin-bottom: 10rem;
   &__background {
     width: 100%;
     height: 100%;
@@ -19,7 +18,13 @@
       height: 100%;
       object-fit: cover;
       object-position: center bottom;
-      border-radius: 0 0 20rem 20rem;
+      border-radius: 65% 0 50%;
+    }
+  }
+
+  .reversed {
+    img {
+      border-radius: 0 50%;
     }
   }
 
@@ -33,9 +38,6 @@
     left: 50%;
     transform: translate(-50%, 50%);
   }
-
-  
-
 }
 
 .theme {
@@ -43,5 +45,6 @@
 }
 
 .anothertheme {
-  filter: invert(82%) sepia(33%) saturate(6199%) hue-rotate(341deg) brightness(87%) contrast(84%);
+  filter: invert(82%) sepia(33%) saturate(6199%) hue-rotate(341deg)
+    brightness(87%) contrast(84%);
 }

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import styles from "./HeroSection.module.scss";
 import Link from "next/link";
 import logo from "@/public/assets/Logo.svg";
@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 interface HeroSectionProps {
   theme?: "orange" | "turquoise";
   heroHeadlines: ReactNode;
-  heroImgSrc: string;
+  heroImgSrc: string | StaticImageData;
 }
 
 function HeroSection({
@@ -17,8 +17,18 @@ function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className={styles.hero}>
-      <div className={styles.hero__background}>
-        <Image src={heroImgSrc} alt="hero background" priority />
+      <div
+        className={`${styles.hero__background} ${
+          theme === "orange" ? styles.reversed : ""
+        }`}
+      >
+        <Image
+          src={heroImgSrc}
+          alt="hero background"
+          width={1900}
+          height={1220}
+          priority
+        />
       </div>
 
       <div

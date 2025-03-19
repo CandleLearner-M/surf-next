@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./../sass/main.scss";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,6 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <NextTopLoader
+          color="#14a998"
+          shadow="0 0 10px #14a998, 0 0 5px #4ca771, 0 0 15px #7aa14a, 0 0 20px #a5952e, 0 0 30px #ce822f"
+          showSpinner={false}
+          height={4}
+        />
+
         <Header />
         {children}
         <Footer />

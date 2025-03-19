@@ -11,6 +11,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.21",
     "next": "15.2.3",
+    "nextjs-toploader": "^3.7.15",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
