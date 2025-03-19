@@ -1,0 +1,17 @@
+.btn {
+  font-size: 2rem;
+  border-radius: 2.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-black {
+    background-color: black;
+    color: white;
+  }
+
+  &-small {
+    padding: 1.2rem 2rem;
+  }
+}

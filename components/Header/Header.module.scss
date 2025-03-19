@@ -2,39 +2,28 @@
   width: 100%;
   position: sticky;
 
-  ul {
-    width: 100%;
-    display: flex;
-    padding: 24.24px 48px;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.4rem 4.8rem;
+  align-items: center;
 
-    justify-content: space-between;
+  img {
+    width: 5rem;
+    height: auto;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 4.6rem;
 
     li {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 45px;
-
-      font-size: 25px;
-
       cursor: pointer;
-
 
       h4 {
         font-size: 30px;
       }
     }
   }
-
-  .btn {
-    background-color: black;
-    height: 50px;
-    width: 177.5px;
-    border-radius: 25px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
-

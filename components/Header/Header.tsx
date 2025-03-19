@@ -12,9 +12,9 @@ function Header() {
   ];
 
   return (
-    <nav className={styles.header}>
+    <header className={styles.header}>
       <Link href="/">
-        <Image src={logo} alt="surfingCamp" width={50} priority />
+        <Image src={logo} alt="surfingCamp" priority />
       </Link>
       <ul>
         {navItems.map((item) => (
@@ -27,9 +27,9 @@ function Header() {
       </ul>
 
       <Link href="book">
-        <button className={styles.btn}>BOOK NOW</button>
+        <button className="btn btn-black btn-small">BOOK NOW</button>
       </Link>
-    </nav>
+    </header>
   );
 }
 export default Header;
