@@ -33,3 +33,12 @@
     }
   }
 }
+
+.light {
+  color: white;
+
+  img {
+    filter: invert(99%) sepia(3%) saturate(825%) hue-rotate(200deg)
+      brightness(118%) contrast(100%);
+  }
+}

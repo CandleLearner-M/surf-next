@@ -19,8 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NextTopLoader
-          color="#14a998"
-          shadow="0 0 10px #14a998, 0 0 5px #4ca771, 0 0 15px #7aa14a, 0 0 20px #a5952e, 0 0 30px #ce822f"
+          color={Date.now() % 2 === 0 ? "#CE822F" : "#14a998"}
           showSpinner={false}
           height={4}
         />

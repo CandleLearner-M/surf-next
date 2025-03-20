@@ -1,15 +1,13 @@
 import HeroSection from "@/components/HeroSection/HeroSection";
 import InfoBlock from "@/components/InfoBlock/InfoBlock";
-import heroImg from "@/public/assets/heroImage.png";
 import img from "@/public/assets/image1.png";
 
-
-export default function Home() {
-  const strapLine = (
+function Blog() {
+  const straplines = (
     <>
-      <h1>barrel.</h1>
+      <h1>discover.</h1>
       <h1>your.</h1>
-      <h1>happiness</h1>
+      <h1>spirit.</h1>
     </>
   );
 
@@ -29,16 +27,18 @@ export default function Home() {
         atmosphere, [Location] sets the perfect stage for your surf adventure.
    `,
 
-    button: (
-      <button className="btn btn--orange btn--medium">Book Now</button>
-    ),
+    button: <button className="btn btn--orange btn--medium">Book Now</button>,
     imgSrc: img,
     reversed: false,
   };
-
   return (
     <main>
-      <HeroSection heroHeadlines={strapLine} heroImgSrc={heroImg} />
+      <HeroSection
+        heroHeadlines={straplines}
+        heroImgSrc=""
+        theme="orange"
+      />
+
       <InfoBlock data={infoBlockData} />
 
       <InfoBlock
@@ -50,8 +50,9 @@ export default function Home() {
           ),
         }}
       />
-
-   
+      <InfoBlock data={infoBlockData} />
     </main>
   );
 }
+
+export default Blog;

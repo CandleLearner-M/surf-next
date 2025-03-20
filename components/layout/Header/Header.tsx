@@ -1,10 +1,15 @@
-import Image from "next/image";
+"use client";
 import logo from "@/public/assets/Logo.svg";
+import Image from "next/image";
 import Link from "next/link";
 
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.scss";
 
 function Header() {
+  const path = usePathname();
+  console.log(path);
+
   const navItems = [
     { display: "the camp.", slug: "/" },
     { display: "the experience.", slug: "/experience" },
@@ -12,7 +17,7 @@ function Header() {
   ];
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${path === '/experience' ? styles.light: ""}`}>
       <Link href="/">
         <Image src={logo} alt="surfingCamp" priority />
       </Link>
