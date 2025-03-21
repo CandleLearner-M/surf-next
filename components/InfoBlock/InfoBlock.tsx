@@ -1,21 +1,39 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import styles from "./infoBlock.module.scss";
-import { ReactNode } from "react";
+
+interface TextElement {
+  type: "text";
+  text: string;
+}
+
+interface ParagraphElement {
+  type: "paragraph";
+  children: TextElement[];
+}
 
 interface InfoBlockProps {
   data: {
     headline: string;
-    text: ReactNode;
-    imgSrc: string | StaticImageData;
-    button: ReactNode;
-    reversed: boolean;
+    text: ParagraphElement[];
+    imageSrc: string | StaticImageData;
+    button: { id: string; text: string; color: string; slug: string };
+    showImageInRight: boolean;
   };
 }
 
 function InfoBlock({ data }: InfoBlockProps) {
-  const { imgSrc, headline: title, text: paragraph, button, reversed } = data;
+  console.log(data);
+  const {
+    imageSrc,
+    headline: title,
+    text: paragraphs,
+    button: { text: btnTxt, color, slug },
+    showImageInRight: reversed,
+  } = data;
+
   return (
     <section className={styles.infoblock}>
       <div
@@ -24,7 +42,7 @@ function InfoBlock({ data }: InfoBlockProps) {
         }`}
       >
         <Image
-          src={imgSrc}
+          src={imageSrc}
           alt="image"
           width={1200}
           height={800}
@@ -34,8 +52,13 @@ function InfoBlock({ data }: InfoBlockProps) {
 
       <div className={styles.infoblock__text}>
         <h1>{title}</h1>
-        <p>{paragraph}</p>
-        {button}
+        <p>
+          {paragraphs?.map((paragraph) => paragraph.children[0].text + "\n")}
+        </p>
+
+        <button className={`btn btn-medium btn-${color}`}>
+          <Link href={slug}>{btnTxt}</Link>
+        </button>
       </div>
     </section>
   );
