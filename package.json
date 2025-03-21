@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
+    "axios": "^1.8.4",
     "next": "15.2.3",
     "nextjs-toploader": "^3.7.15",
     "postcss": "^8.5.3",

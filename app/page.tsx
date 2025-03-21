@@ -2,9 +2,15 @@ import HeroSection from "@/components/HeroSection/HeroSection";
 import InfoBlock from "@/components/InfoBlock/InfoBlock";
 import heroImg from "@/public/assets/heroImage.png";
 import img from "@/public/assets/image1.png";
+import { fetchDataFromStrapi } from "@/utils/strapi.utils";
 
+export default async function Home() {
+  const data = await fetchDataFromStrapi(
+    `infoblocks-landing?populate[info_blocks][populate]=*`
+  );
 
-export default function Home() {
+  console.log(data.attributes);
+
   const strapLine = (
     <>
       <h1>barrel.</h1>
@@ -29,9 +35,7 @@ export default function Home() {
         atmosphere, [Location] sets the perfect stage for your surf adventure.
    `,
 
-    button: (
-      <button className="btn btn--orange btn--medium">Book Now</button>
-    ),
+    button: <button className="btn btn--orange btn--medium">Book Now</button>,
     imgSrc: img,
     reversed: false,
   };
@@ -50,8 +54,6 @@ export default function Home() {
           ),
         }}
       />
-
-   
     </main>
   );
 }
