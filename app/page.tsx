@@ -10,8 +10,6 @@ export default async function Home() {
 
   const homeInfoBlock = processInfoBlock(data);
 
-  console.log(homeInfoBlock);
-
   const strapLine = (
     <>
       <h1>barrel.</h1>
@@ -30,3 +28,5 @@ export default async function Home() {
     </main>
   );
 }
+
+export const revalidate = 300;

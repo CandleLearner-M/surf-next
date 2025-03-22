@@ -1,7 +1,8 @@
 "use client";
 
+import { createInfoblockButton } from "@/utils/strapi.utils";
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
+import Markdown from "react-markdown";
 import styles from "./infoBlock.module.scss";
 
 interface TextElement {
@@ -30,9 +31,10 @@ function InfoBlock({ data }: InfoBlockProps) {
     imageSrc,
     headline: title,
     text: paragraphs,
-    button: { text: btnTxt, color, slug },
     showImageInRight: reversed,
   } = data;
+
+  const button = createInfoblockButton(data.button);
 
   return (
     <section className={styles.infoblock}>
@@ -52,13 +54,10 @@ function InfoBlock({ data }: InfoBlockProps) {
 
       <div className={styles.infoblock__text}>
         <h1>{title}</h1>
-        <p>
-          {paragraphs?.map((paragraph) => paragraph.children[0].text + "\n")}
-        </p>
-
-        <button className={`btn btn-medium btn-${color}`}>
-          <Link href={slug}>{btnTxt}</Link>
-        </button>
+        <Markdown>
+          {paragraphs?.map((paragraph) => paragraph.children[0].text).join(" ")}
+        </Markdown>
+        <button>{button}</button>
       </div>
     </section>
   );
