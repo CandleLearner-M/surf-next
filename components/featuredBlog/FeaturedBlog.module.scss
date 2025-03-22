@@ -1,11 +1,10 @@
 .featured {
-  height: 100vh;
+  height: 70vh;
 
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  column-gap: 4rem;
+  gap: 5rem;
 
   overflow: hidden;
 
@@ -14,20 +13,16 @@
     flex-direction: column;
     gap: 3rem;
     align-items: start;
-    h3 {
-      font-size: 6rem;
-    }
 
     p {
       font-size: 2rem;
+      // max-width: 50ch;
     }
-
-
   }
 
   img {
-    width: 100%;
     height: 44.3rem;
+    width: 64.1rem;
     object-fit: cover;
     object-position: center bottom;
     border-radius: 4rem;

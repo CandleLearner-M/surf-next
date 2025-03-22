@@ -40,7 +40,7 @@ function HeroSection({
       </div>
 
       <button className={`btn btn--medium btn--${theme}`}>
-        <Link href="/events">BOOK NOW</Link>
+        <Link href="/events">Book Now</Link>
       </button>
 
       <Image

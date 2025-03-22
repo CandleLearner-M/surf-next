@@ -32,7 +32,7 @@ function Header() {
       </ul>
 
       <Link href="/events">
-        <button className="btn btn-black btn-small">BOOK NOW</button>
+        <button className="btn btn-black btn-small">Book Now</button>
       </Link>
     </header>
   );
