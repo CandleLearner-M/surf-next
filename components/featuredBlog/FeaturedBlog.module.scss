@@ -1,6 +1,5 @@
 .featured {
   height: 100vh;
-  padding: 20.2rem 4.8rem 4.8rem 4.8rem;
 
   display: grid;
   align-items: center;
@@ -8,25 +7,29 @@
   grid-template-rows: repeat(2, 1fr);
   column-gap: 4rem;
 
-
   overflow: hidden;
 
   &__paragraph {
-    h1 {
-      font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: start;
+    h3 {
+      font-size: 6rem;
     }
 
     p {
       font-size: 2rem;
-      margin-bottom: 3rem;
     }
+
+
   }
 
   img {
-    width: 66.4rem;
+    width: 100%;
     height: 44.3rem;
     object-fit: cover;
     object-position: center bottom;
-    border-radius: 2rem;
+    border-radius: 4rem;
   }
 }

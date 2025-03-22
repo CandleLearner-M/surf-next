@@ -51,7 +51,7 @@ function InfoBlock({ data }: InfoBlockProps) {
       </div>
 
       <div className={styles.infoblock__text}>
-        <h1>{title}</h1>
+        <h3>{title}</h3>
         <Markdown>
           {paragraphs?.map((paragraph) => paragraph.children[0].text).join(" ")}
         </Markdown>

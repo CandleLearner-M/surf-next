@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-import styles from './FeaturedBlog.module.scss'
+import styles from "./FeaturedBlog.module.scss";
 
 import Image from "next/image";
 import { ReactNode } from "react";
-import { ParagraphElement } from '../InfoBlock/InfoBlock';
-import Markdown from 'react-markdown';
-
+import { ParagraphElement } from "../InfoBlock/InfoBlock";
+import Markdown from "react-markdown";
 
 interface FeaturedBlogProps {
   data: {
@@ -20,14 +19,18 @@ interface FeaturedBlogProps {
 function FeaturedBlog({ data }: FeaturedBlogProps) {
   const { title, buttonCPN, imageSrc, postBody } = data;
 
-  console.log(postBody)
+  console.log(postBody);
 
   return (
     <section className={styles.featured}>
       <div className={styles.featured__paragraph}>
-        <h1>{title}</h1>
-        <Markdown>{postBody.map((paragraph) => paragraph.children[0].text + "\n").join(' ') }</Markdown>
-        {buttonCPN}
+        <h3>{title}</h3>
+        <Markdown>
+          {postBody
+            .map((paragraph) => paragraph.children[0].text + "\n")
+            .join(" ")}
+        </Markdown>
+        <button>{buttonCPN}</button>
       </div>
       <Image src={imageSrc} alt="some img" height={1200} width={1900} />
     </section>
