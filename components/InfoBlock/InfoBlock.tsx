@@ -8,7 +8,7 @@ interface TextElement {
   text: string;
 }
 
-interface ParagraphElement {
+export interface ParagraphElement {
   type: "paragraph";
   children: TextElement[];
 }
