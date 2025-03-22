@@ -1,5 +1,3 @@
-"use client";
-
 import { createInfoblockButton } from "@/utils/strapi.utils";
 import Image, { StaticImageData } from "next/image";
 import Markdown from "react-markdown";

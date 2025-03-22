@@ -18,10 +18,15 @@ export async function fetchDataFromStrapi(route) {
 export function processInfoBlock(rawData) {
   const infoBlocksRaw = rawData.info_blocks;
 
-  return infoBlocksRaw.map((infoBlock) => ({
+  return infoBlocksRaw.map((infoBlock) => processData(infoBlock));
+}
+
+export function processData(infoBlock) {
+  return {
     ...infoBlock,
     imageSrc: BASE_URL + infoBlock.image.url,
-  }));
+    buttonCPN: createInfoblockButton(infoBlock.button),
+  };
 }
 
 export function createInfoblockButton(buttonData) {
