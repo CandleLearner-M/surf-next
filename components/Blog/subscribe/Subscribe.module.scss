@@ -1,0 +1,46 @@
+.subscribe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #F1E8D9;
+  border-radius: 4rem;
+  padding: 3.8rem 2.8rem;
+
+
+  &__text {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    p {
+      font-size: 1.7rem;
+      max-width: 60ch;
+    }
+  }
+
+  &__mail {
+    input {
+      width: 35rem;
+      // height: 6.4rem;
+
+      
+
+      border-radius: 2rem 0 0 0;
+    }
+
+    button {
+      background-color: #14a998;
+      color: white;
+      padding: 2.1rem 5rem;
+
+      border-radius: 0 0 2rem 0;
+    }
+  }
+
+  &__thank {
+    display: block;
+    margin: 1rem auto;
+    font-size: 2rem;
+  }
+}

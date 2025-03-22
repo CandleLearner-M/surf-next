@@ -4,7 +4,7 @@ import styles from "./FeaturedBlog.module.scss";
 
 import Image from "next/image";
 import { ReactNode } from "react";
-import { ParagraphElement } from "../InfoBlock/InfoBlock";
+import { ParagraphElement } from "@/components/InfoBlock/InfoBlock";
 import Markdown from "react-markdown";
 
 interface FeaturedBlogProps {
