@@ -27,10 +27,11 @@ design behind the scenes of crafting the perfect board `,
     {
       imageSrc: img,
       title: `Surfboard shaping and 
-design behind the scenes of crafting the perfect board `,
+design behind the scenes of crafting the perfect board, Surfboard shaping and 
+design behind the scenes of crafting the perfect board`,
 
       date: "Monday, June 05, 2023",
-      // price: "Prices starting at 580€",
+      price: "Prices starting at 580€",
       slug: "something",
     },
   ];
@@ -43,6 +44,8 @@ design behind the scenes of crafting the perfect board `,
           <Card data={item} key={idx} />
         ))}
       </div>
+
+      <button className="btn btn--medium btn--turquoise">See More</button>
     </section>
   );
 }

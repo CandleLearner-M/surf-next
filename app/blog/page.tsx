@@ -1,19 +1,23 @@
 import FeaturedBlog from "@/components/Blog/featuredBlog/FeaturedBlog";
-import { fetchDataFromStrapi, processData } from "@/utils/strapi.utils";
+import { fetchDataFromStrapi, processBlogPost } from "@/utils/strapi.utils";
 
-import styles from "./page.module.scss";
-import Subscribe from "@/components/Blog/subscribe/Subscribe";
 import FeaturedBlogs from "@/components/Blog/featuredBlogs/FeaturedBlogs";
+import Subscribe from "@/components/Blog/subscribe/Subscribe";
+import styles from "./page.module.scss";
 
 async function Blog() {
-  const data = await fetchDataFromStrapi("featured-post?populate=*");
-  const featuredBlog = processData(data);
+  const data = await fetchDataFromStrapi("blog-articles?populate=*");
+  const blogs = processBlogPost(data);
+
+  const featuredBlog = blogs.find((blog) => blog.isFeaturedArticle);
+
+  const otherBlogs = blogs.filter((blog) => !blog.isFeaturedArticle);
 
   return (
     <main className={styles.blog}>
-      <FeaturedBlog data={featuredBlog} />
+      <FeaturedBlog featuredBlog={featuredBlog} />
       <Subscribe />
-      <FeaturedBlogs />
+      <FeaturedBlogs  />
     </main>
   );
 }

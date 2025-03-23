@@ -8,7 +8,7 @@ interface CardProps {
     title: string;
     date: string;
     price?: string;
-    slug: string
+    slug: string;
   };
 }
 
@@ -17,7 +17,12 @@ function Card({ data }: CardProps) {
   return (
     <Link href={`/blog/${slug}`} className={styles.card}>
       <Image src={imageSrc} alt={title} width={420} height={355} />
-      <p>{title}</p>
+      <p>
+        {title.length > 70
+          ? title.split(" ").slice(0, 11).join(" ") + "..."
+          : title}
+      </p>
+
       <small>{date} </small>
 
       {price && <small>{price}</small>}

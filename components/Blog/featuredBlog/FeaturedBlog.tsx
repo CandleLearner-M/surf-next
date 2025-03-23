@@ -2,37 +2,29 @@
 
 import styles from "./FeaturedBlog.module.scss";
 
+import { Article } from "@/types/types";
 import Image from "next/image";
-import { ReactNode } from "react";
-import { ParagraphElement } from "@/components/InfoBlock/InfoBlock";
+import Link from "next/link";
 import Markdown from "react-markdown";
 
 interface FeaturedBlogProps {
-  data: {
-    title: string;
-    imageSrc: string;
-    postBody: ParagraphElement[];
-    buttonCPN: ReactNode;
-  };
+  featuredBlog: Article;
 }
 
-function FeaturedBlog({ data }: FeaturedBlogProps) {
-  const { title, buttonCPN, imageSrc, postBody } = data;
-
-  console.log(postBody);
+function FeaturedBlog({ featuredBlog }: FeaturedBlogProps) {
+  console.log(featuredBlog);
+  const { headline, excerpt, image, slug } = featuredBlog;
 
   return (
     <section className={styles.featured}>
       <div className={styles.featured__paragraph}>
-        <h3>{title}</h3>
-        <Markdown>
-          {postBody
-            .map((paragraph) => paragraph.children[0].text + "\n")
-            .join(" ")}
-        </Markdown>
-        <button>{buttonCPN}</button>
+        <h3>{headline}</h3>
+        <Markdown>{excerpt}</Markdown>
+        <button className="btn btn--medium btn--turquoise">
+          <Link href={`blog/${slug}`}>Read more</Link>
+        </button>
       </div>
-      <Image src={imageSrc} alt="some img" height={1200} width={1900} />
+      <Image src={image} alt="some img" height={1200} width={1900} />
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import { Article } from "@/types/types";
 import axios from "axios";
 import Link from "next/link";
 
@@ -27,6 +28,13 @@ export function processData(infoBlock) {
     imageSrc: BASE_URL + infoBlock.image.url,
     buttonCPN: createInfoblockButton(infoBlock.button),
   };
+}
+
+export function processBlogPost(rawData): Article[] {
+  return rawData.map((blog) => ({
+    ...blog,
+    image: BASE_URL + blog.image.url,
+  }));
 }
 
 export function createInfoblockButton(buttonData) {
