@@ -51,3 +51,15 @@ export function createInfoblockButton(buttonData) {
     </Link>
   );
 }
+
+
+export function formatDate(isoDateString: string): string {
+  const date = new Date(isoDateString);
+
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "2-digit",
+    year: "numeric",
+  });
+}

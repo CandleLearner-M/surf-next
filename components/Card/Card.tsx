@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./Card.module.scss";
 import Link from "next/link";
 import { Article } from "@/types/types";
+import { formatDate } from "@/utils/strapi.utils";
 
 interface CardProps {
   data: Article;
@@ -9,6 +10,7 @@ interface CardProps {
 
 function Card({ data }: CardProps) {
   const { image, headline, createdAt, price, slug } = data;
+
   return (
     <Link href={`/blog/${slug}`} className={styles.card}>
       <Image src={image} alt={headline} width={420} height={355} />
@@ -18,7 +20,7 @@ function Card({ data }: CardProps) {
           : headline}
       </p>
 
-      <small>{createdAt}</small>
+      <small>{formatDate(createdAt)}</small>
 
       {price && <small>{price}</small>}
     </Link>

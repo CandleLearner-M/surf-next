@@ -1,9 +1,7 @@
 import Card from "@/components/Card/Card";
 
-import img from "@/public/assets/image1.png";
-
-import styles from "./FeaturedBlogs.module.scss";
 import { Article } from "@/types/types";
+import styles from "./FeaturedBlogs.module.scss";
 
 interface FeaturedBlogsProps {
   articles: Article[];
