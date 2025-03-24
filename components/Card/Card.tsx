@@ -1,29 +1,24 @@
 import Image from "next/image";
 import styles from "./Card.module.scss";
 import Link from "next/link";
+import { Article } from "@/types/types";
 
 interface CardProps {
-  data: {
-    imageSrc: string;
-    title: string;
-    date: string;
-    price?: string;
-    slug: string;
-  };
+  data: Article;
 }
 
 function Card({ data }: CardProps) {
-  const { imageSrc, title, date, price, slug } = data;
+  const { image, headline, createdAt, price, slug } = data;
   return (
     <Link href={`/blog/${slug}`} className={styles.card}>
-      <Image src={imageSrc} alt={title} width={420} height={355} />
+      <Image src={image} alt={headline} width={420} height={355} />
       <p>
-        {title.length > 70
-          ? title.split(" ").slice(0, 11).join(" ") + "..."
-          : title}
+        {headline.length > 70
+          ? headline.split(" ").slice(0, 11).join(" ") + "..."
+          : headline}
       </p>
 
-      <small>{date} </small>
+      <small>{createdAt}</small>
 
       {price && <small>{price}</small>}
     </Link>

@@ -31,10 +31,13 @@ export function processData(infoBlock) {
 }
 
 export function processBlogPost(rawData): Article[] {
-  return rawData.map((blog) => ({
+  const blogs = rawData.map((blog) => ({
     ...blog,
     image: BASE_URL + blog.image.url,
   }));
+
+  blogs.sort((a, z) => new Date(z.createdAt) - new Date(a.createdAt));
+  return blogs;
 }
 
 export function createInfoblockButton(buttonData) {

@@ -9,7 +9,7 @@ async function Blog() {
   const data = await fetchDataFromStrapi("blog-articles?populate=*");
   const blogs = processBlogPost(data);
 
-  const featuredBlog = blogs.find((blog) => blog.isFeaturedArticle);
+  const featuredBlog = blogs.find((blog) => blog.isFeaturedArticle)!;
 
   const otherBlogs = blogs.filter((blog) => !blog.isFeaturedArticle);
 
@@ -17,7 +17,7 @@ async function Blog() {
     <main className={styles.blog}>
       <FeaturedBlog featuredBlog={featuredBlog} />
       <Subscribe />
-      <FeaturedBlogs  />
+      <FeaturedBlogs articles={otherBlogs} />
     </main>
   );
 }
