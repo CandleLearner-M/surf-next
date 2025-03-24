@@ -40,6 +40,12 @@ export function processBlogPost(rawData): Article[] {
   return blogs;
 }
 
+export async function fetchBlogArticles() {
+  const data = await fetchDataFromStrapi("blog-articles?populate=*");
+  const blogs = processBlogPost(data);
+  return blogs;
+}
+
 export function createInfoblockButton(buttonData) {
   if (!buttonData) return null;
   return (
@@ -51,7 +57,6 @@ export function createInfoblockButton(buttonData) {
     </Link>
   );
 }
-
 
 export function formatDate(isoDateString: string): string {
   const date = new Date(isoDateString);
