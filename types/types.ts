@@ -11,4 +11,42 @@ export interface Article {
   image: string; // URL
   isFeaturedArticle: boolean;
   slug: string;
+  textColor: 'white' | 'black';
+  articleContent: ArticleContentItem[];
 }
+
+interface BaseContentItem {
+  __component: string;
+  id: number;
+}
+
+interface ParagraphHeadline extends BaseContentItem {
+  __component: "blog-article.paragraph-headline";
+  headline: string;
+  slug: string;
+}
+
+interface Paragraph extends BaseContentItem {
+  __component: "blog-article.paragraph";
+  paragraph: string;
+}
+
+interface ParagraphWithImage extends BaseContentItem {
+  __component: "blog-article.paragraph-with-image";
+  paragraph: string;
+  isLandscape: boolean;
+  imageShowsRight: boolean;
+  image: string; // URL to image
+}
+
+interface LandscapeImage extends BaseContentItem {
+  __component: "blog-article.landscape-image";
+  imageCaption: string;
+  image: string; // URL to image
+}
+
+export type ArticleContentItem =
+  | ParagraphHeadline
+  | Paragraph
+  | ParagraphWithImage
+  | LandscapeImage;

@@ -1,5 +1,7 @@
+import ArticleIntro from "@/components/Article/ArticleIntro/ArticleIntro";
 import { Article } from "@/types/types";
 import { fetchBlogArticles, fetchDataFromStrapi } from "@/utils/strapi.utils";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
@@ -8,9 +10,10 @@ export default async function Page({
 }) {
   const blogs = await fetchBlogArticles();
   const blog = blogs.find((blog) => blog.slug === params.article);
+  if (!blog) notFound();
   return (
     <main>
-      <h1>{blog?.headline}</h1>
+      <ArticleIntro article={blog} />
     </main>
   );
 }
