@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Markdown from "react-markdown";
-import styles from './ParagraphWithImage.module.scss'
+import styles from "./ParagraphWithImage.module.scss";
 
 function ParagraphWithImage({
   paragraph,
   image,
   imageShowsRight,
-  isLandscape
+  isLandscape,
 }: {
   paragraph: string;
   image: string;
@@ -15,8 +15,13 @@ function ParagraphWithImage({
 }) {
   return (
     <div className={styles.paragraphwithimage}>
-      <Markdown>{paragraph}</Markdown>
+      <div className={styles.markdowncontainer}>
+        <Markdown>{paragraph}</Markdown>
+      </div>
       <Image
+        className={`${!imageShowsRight ? styles.imageshowsleft : ""} ${
+          !isLandscape ? styles.portrait : ""
+        }`}
         src={image}
         alt={paragraph.slice(0, 10)}
         height={1080}

@@ -1,7 +1,42 @@
 .paragraphwithimage {
+  margin-bottom: 5rem;
   display: flex;
+  gap: 4rem;
+    font-size: 2rem;
+
+
 
   img {
-    height: ;
+    width: 73.9rem;
+    height: 47.3rem;
+    object-fit: cover;
+    flex: 0 0 auto;
+  }
+
+  img.portrait {
+    height: 60.3rem;
+    width: 39.1rem;
   }
 }
+
+.imageshowsleft {
+  order: -1;
+}
+
+.markdowncontainer {
+  flex: 1;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 4rem 0;
+    font-size: 1.9rem;
+    width: 80ch;
+    margin-left: 4rem;
+  
+  }
+}
+
+

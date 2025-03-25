@@ -6,6 +6,7 @@ import ParagraphWithImage from "@/components/Article/ParagraphWithImage/Paragrap
 import { Article } from "@/types/types";
 import { fetchBlogArticles, fetchDataFromStrapi } from "@/utils/strapi.utils";
 import { notFound } from "next/navigation";
+import styles from "./page.module.scss";
 
 export default async function Page({
   params,
@@ -19,35 +20,37 @@ export default async function Page({
   return (
     <main>
       <ArticleIntro article={blog} />
-      {blog.articleContent.map((content, idx) => {
-        switch (content.__component) {
-          case "blog-article.paragraph-headline":
-            return (
-              <Headline key={idx}>
-                <h3>{content.headline}</h3>
-              </Headline>
-            );
+      <div className={styles.articleContent}>
+        {blog.articleContent.map((content, idx) => {
+          switch (content.__component) {
+            case "blog-article.paragraph-headline":
+              return (
+                <Headline key={idx}>
+                  <h3>{content.headline}</h3>
+                </Headline>
+              );
 
-          case "blog-article.paragraph":
-            return <Paragraph paragraph={content.paragraph} key={idx} />;
+            case "blog-article.paragraph":
+              return <Paragraph paragraph={content.paragraph} key={idx} />;
 
-          case "blog-article.landscape-image":
-            return <LandscapeImage image={content.image} key={idx} />;
+            case "blog-article.landscape-image":
+              return <LandscapeImage image={content.image} key={idx} />;
 
-          case "blog-article.paragraph-with-image":
-            return (
-              <ParagraphWithImage
-                image={content.image}
-                paragraph={content.paragraph}
-                imageShowsRight={content.imageShowsRight}
-                isLandscape={content.isLandscape}
-                key={idx}
-              />
-            );
-          default:
-            return null;
-        }
-      })}
+            case "blog-article.paragraph-with-image":
+              return (
+                <ParagraphWithImage
+                  image={content.image}
+                  paragraph={content.paragraph}
+                  imageShowsRight={content.imageShowsRight}
+                  isLandscape={content.isLandscape}
+                  key={idx}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
+      </div>
     </main>
   );
 }
