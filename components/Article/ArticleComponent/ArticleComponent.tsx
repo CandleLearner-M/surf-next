@@ -7,7 +7,7 @@ import ParagraphWithImage from "../ParagraphWithImage/ParagraphWithImage";
 function ArticleComponent({ component }: { component: ArticleContentItem }) {
   switch (component.__component) {
     case "blog-article.paragraph-headline":
-      return <Headline>{component.headline}</Headline>;
+      return <Headline id={component.slug}>{component.headline}</Headline>;
 
     case "blog-article.paragraph":
       return <Paragraph paragraph={component.paragraph} />;
