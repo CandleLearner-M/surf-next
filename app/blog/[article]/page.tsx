@@ -4,6 +4,7 @@ import { Article } from "@/types/types";
 import { fetchBlogArticles, fetchDataFromStrapi } from "@/utils/strapi.utils";
 import { notFound } from "next/navigation";
 import styles from "./page.module.scss";
+import FeaturedBlogs from "@/components/Blog/featuredBlogs/FeaturedBlogs";
 
 export default async function Page({
   params,
@@ -12,6 +13,7 @@ export default async function Page({
 }) {
   const blogs = await fetchBlogArticles();
   const blog = blogs.find((blog) => blog.slug === params.article);
+  const otherBlogs = blogs.filter((blog) => blog.slug !== params.article);
 
   if (!blog) notFound();
   return (
@@ -21,6 +23,9 @@ export default async function Page({
         {blog.articleContent.map((component) => (
           <ArticleComponent component={component} key={component.id} />
         ))}
+      </div>
+      <div className={styles.blogs}>
+        <FeaturedBlogs articles={otherBlogs} headline="Explore Our Other Articles" />
       </div>
     </main>
   );

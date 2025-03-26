@@ -21,7 +21,6 @@ function LandscapeImage({
         height={599}
         width={898}
       />
-      <caption>{caption}</caption>
     </div>
   );
 }

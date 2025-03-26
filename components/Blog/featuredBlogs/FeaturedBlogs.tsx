@@ -8,9 +8,10 @@ import { useState } from "react";
 
 interface FeaturedBlogsProps {
   articles: Article[];
+  headline: string;
 }
 
-function FeaturedBlogs({ articles }: FeaturedBlogsProps) {
+function FeaturedBlogs({ articles, headline }: FeaturedBlogsProps) {
   const [itemNumber, setItemNumber] = useState(3);
 
   const onShowMore = function () {
@@ -20,7 +21,7 @@ function FeaturedBlogs({ articles }: FeaturedBlogsProps) {
 
   return (
     <section className={styles.blogs}>
-      <h3>Our featured articles</h3>
+      <h3>{headline || "Our featured articles"}</h3>
       <div>
         {articles.slice(0, itemNumber).map((item, idx) => (
           <Card data={item} key={idx} />
