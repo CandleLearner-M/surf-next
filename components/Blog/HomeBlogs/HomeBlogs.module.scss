@@ -4,21 +4,44 @@
   align-items: center;
   justify-content: center;
 
+  h2 {
+    margin-bottom: 8rem;
+  }
+
   & div {
     display: flex;
     flex-wrap: wrap;
 
-    & img {
-      border-radius: 5rem;
-      width: 35% !important;
-      height: 36.1rem;
+    justify-content: space-between;
+    gap: 2rem;
 
-      &:first-of-type {
-        width: 70% ;
-        object-fit: cover;
+    & a {
+      display: flex;
+      flex-direction: column;
+      width: 45vw;
+
+      h4 {
+        font-size: 1.9rem;
+      }
+      p {
+        margin-bottom: 2rem;
+      }
+      & img {
+        width: 100%;
+        border-radius: 5rem;
+        height: 36.1rem;
+        object-fit: cover !important;
       }
     }
   }
 
   padding: 10.5rem 4.8rem;
+}
+
+.blog1 {
+  width: 55vw !important;
+}
+
+.blog2 {
+  width: 35vw !important ;
 }
