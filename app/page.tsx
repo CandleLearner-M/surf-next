@@ -1,3 +1,4 @@
+import HomeBlogs from "@/components/Blog/HomeBlogs/HomeBlogs";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import InfoBlock from "@/components/InfoBlock/InfoBlock";
 import heroImg from "@/public/assets/heroImage.png";
@@ -25,6 +26,8 @@ export default async function Home() {
       {homeInfoBlock.map((homeInfoBlock) => (
         <InfoBlock data={homeInfoBlock} key={homeInfoBlock.id} />
       ))}
+
+      <HomeBlogs />
     </main>
   );
 }

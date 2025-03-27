@@ -2,7 +2,6 @@ import Image from "next/image";
 
 function LandscapeImage({
   image,
-  caption,
 }: {
   image: string;
   caption: string;

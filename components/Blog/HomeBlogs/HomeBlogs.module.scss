@@ -1,0 +1,24 @@
+.homeblog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & div {
+    display: flex;
+    flex-wrap: wrap;
+
+    & img {
+      border-radius: 5rem;
+      width: 35% !important;
+      height: 36.1rem;
+
+      &:first-of-type {
+        width: 70% ;
+        object-fit: cover;
+      }
+    }
+  }
+
+  padding: 10.5rem 4.8rem;
+}
