@@ -16,6 +16,17 @@ export async function fetchDataFromStrapi(route) {
   }
 }
 
+export async function postDataToStrapi(route, data) {
+  const url = `${BASE_URL}/api/${route}`;
+
+  try {
+   return axios.post(url, data);
+  } catch(err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 export function processInfoBlock(rawData) {
   const infoBlocksRaw = rawData.info_blocks;
 
@@ -53,7 +64,6 @@ export function processBlogPost(rawData): Article[] {
               processedComponent.image = BASE_URL + component.image.url;
             }
             break;
-
         }
 
         return processedComponent;
