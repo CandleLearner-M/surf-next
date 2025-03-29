@@ -2,16 +2,21 @@
 
 import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
 import styles from "./SignupForm.module.scss";
+import { postDataToStrapi } from "@/utils/strapi.utils";
+import { AxiosError } from "axios";
 
 function SignupForm({
   infoText,
   headline,
-  btnLabel
+  btnLabel,
 }: {
   infoText: ReactNode;
   headline: string;
-  btnLabel: string
+  btnLabel: string;
 }) {
+  const [submiting, setSubmiting] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,15 +24,50 @@ function SignupForm({
     phoneNumber: "",
   });
 
-  const onChange = function (e:ChangeEvent<HTMLInputElement>) {
-    
-  }
+  const onChange = function (e: ChangeEvent<HTMLInputElement>) {
+    const inputName = e.target.name;
+    if (inputName === "phoneNumber" && !/^[\d+\-]*$/.test(e.target.value)) {
+      return;
+    }
 
-  const onSubmit = function (e: FormEvent<HTMLFormElement>) {
+    setFormData((formData) => ({
+      ...formData,
+      [inputName]: e.target.value,
+    }));
+  };
+
+  const onSubmit = async function (e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if (
+      !(
+        formData.email &&
+        formData.lastName &&
+        formData.firstName &&
+        formData.phoneNumber
+      )
+    )
+      return;
 
-  }
+    try {
+      setSubmiting(true);
+      await postDataToStrapi("participants", {
+        data: {
+          ...formData,
+          isGeneralInterest: true,
+        },
+      });
+
+      setShowConfirmation(true);
+    } catch (err) {
+      if (err instanceof AxiosError)
+        setErrorMsg(
+          err?.response?.data?.error?.message || "Something went Wrong"
+        );
+    } finally {
+      setSubmiting(false);
+    }
+  };
 
   return (
     <section className={styles.events}>
@@ -35,35 +75,44 @@ function SignupForm({
         <h4>{headline}</h4>
         {infoText}
       </div>
-
-      <form onSubmit={onSubmit}>
-        <div className={styles.firstLine}>
+      {showConfirmation ? (
+        <h3>Thank you for signing up</h3>
+      ) : (
+        <form onSubmit={onSubmit}>
+          <div className={styles.firstLine}>
+            <TextInput
+              inputName="firstName"
+              label="First Name"
+              value={formData.firstName}
+              onChange={onChange}
+            />
+            <TextInput
+              inputName="lastName"
+              label="Last Name"
+              value={formData.lastName}
+              onChange={onChange}
+            />
+          </div>
           <TextInput
-            inputName="firstName"
-            label="First Name"
-            value={formData.firstName}
+            inputName="email"
+            label="Your e-mail address"
+            value={formData.email}
+            onChange={onChange}
           />
           <TextInput
-            inputName="lastName"
-            label="Last Name"
-            value={formData.lastName}
+            inputName="phoneNumber"
+            label="Your telephone number"
+            value={formData.phoneNumber}
+            onChange={onChange}
           />
-        </div>
-        <TextInput
-          inputName="email"
-          label="Your e-mail address"
-          value={formData.lastName}
-        />
-        <TextInput
-          inputName="phoneNumber"
-          label="Your telephone number"
-          value={formData.phoneNumber}
-        />
 
-        <button className="btn btn--medium btn--turquoise">
-          {btnLabel}
-        </button>
-      </form>
+          <button className="btn btn--medium btn--turquoise" type="submit">
+            {!submiting ? btnLabel : "Sending..."}
+          </button>
+
+          {errorMsg && <p className={styles.error}>{errorMsg}</p>}
+        </form>
+      )}
     </section>
   );
 }
@@ -77,7 +126,7 @@ function TextInput({
   inputName: string;
   label: string;
   value: string;
-  onChange: () => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div className={`${styles.formGroup} `}>
@@ -88,7 +137,7 @@ function TextInput({
         value={value}
         type="text"
         id={inputName}
-        onChange={(e ) =>}
+        onChange={(e) => onChange(e)}
       />
     </div>
   );
