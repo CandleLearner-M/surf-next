@@ -1,0 +1,44 @@
+.events {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 9.4rem;
+
+  .title {
+    p,
+    code {
+      font-size: 1.7rem;
+      margin-bottom: 2rem;
+    }
+    h4 {
+      font-size: 3rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 58.4rem;
+  }
+}
+
+.formGroup {
+  label {
+    display: block;
+    margin: 1rem;
+  }
+
+  input {
+    width: 100%;
+    background-color: #f1e8d9;
+    height: 6.4rem;
+    border-radius: 2rem;
+  }
+}
+
+.firstLine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.8rem;
+}
