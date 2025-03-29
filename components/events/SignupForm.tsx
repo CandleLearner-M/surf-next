@@ -1,14 +1,16 @@
 "use client";
 
-import { ChangeEvent, ReactNode, useState } from "react";
+import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
 import styles from "./SignupForm.module.scss";
 
 function SignupForm({
   infoText,
   headline,
+  btnLabel
 }: {
   infoText: ReactNode;
   headline: string;
+  btnLabel: string
 }) {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -21,6 +23,12 @@ function SignupForm({
     
   }
 
+  const onSubmit = function (e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+
+  }
+
   return (
     <section className={styles.events}>
       <div className={styles.title}>
@@ -28,7 +36,7 @@ function SignupForm({
         {infoText}
       </div>
 
-      <form>
+      <form onSubmit={onSubmit}>
         <div className={styles.firstLine}>
           <TextInput
             inputName="firstName"
@@ -53,7 +61,7 @@ function SignupForm({
         />
 
         <button className="btn btn--medium btn--turquoise">
-          Stay in touch!
+          {btnLabel}
         </button>
       </form>
     </section>

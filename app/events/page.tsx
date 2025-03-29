@@ -48,7 +48,11 @@ function EventsPage() {
   const headline = `You want to stay tuned for our events?`;
   return (
     <main className={styles.events}>
-      <SignupForm infoText={infoText} headline={headline} />
+      <SignupForm
+        infoText={infoText}
+        headline={headline}
+        btnLabel="Stay in touch"
+      />
     </main>
   );
 }
